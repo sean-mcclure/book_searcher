@@ -1,0 +1,14 @@
+{
+  "name": "@pstuffa/tables-with-nested-data",
+  "main": "@pstuffa/tables-with-nested-data.js",
+  "version": "33.0.0",
+  "homepage": "https://observablehq.com/@pstuffa/tables-with-nested-data",
+  "author": {
+    "name": "pstuffa",
+    "url": "https://observablehq.com/@pstuffa"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4"
+  }
+}

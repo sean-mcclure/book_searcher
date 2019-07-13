@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src='https://azlejs.com/v2/azle.min.js'></script>
+<body>
+
+<script>
+
+create_azle(function() {
+	az.load_scripts(["scripts/utility.js", "scripts/components.js", "scripts/parent_functions.js"])
+	az.read_local_file({
+		"file_path": "data/books.json",
+		"done": function(data) {
+			az.hold_value.full_dataset = data.slice(1, 1000)
+		}
+	})
+	az.call_once_satisfied({
+		"condition": "typeof(az.hold_value.full_dataset) !== 'undefined'",
+		"function": function() {
+			az.components.search_by_author('hold_dropdowns_layout_cells', 1)
+			az.components.search_by_isbn('hold_dropdowns_layout_cells', 2)
+			az.components.search_by_language('hold_dropdowns_layout_cells', 3)
+			az.components.d3_table('visual_layout_cells', 1)
+			az.components.d3_barchart('visual_layout_cells', 1)
+		}
+	})
+	az.load_font('Bahianita')
+	az.style_body({
+		"background": "rgb(51, 47, 47)",
+		"min-width": "1300px"
+	})
+	az.add_sections({
+		"this_class": "my_sections",
+		"sections": 1
+	})
+	az.style_sections('my_sections', 1, {
+		"background": "rgb(51, 47, 47)",
+		"height": "auto"
+	})
+	az.add_image('my_sections', 1, {
+		"this_class": "app_logo",
+		"image_path": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Closed_Book_Icon.svg/1024px-Closed_Book_Icon.svg.png"
+	})
+	az.style_image('app_logo', 1, {
+		"align": "center",
+		"width": "100px"
+	})
+	az.add_text('my_sections', 1, {
+		"this_class": "app_title",
+		"text": "BOOK SEARCHER"
+	})
+	az.style_text('app_title', 1, {
+		"color": "white",
+		"align": "center",
+		"font-size": "50px",
+		"font-family": "Bahianita"
+	})
+	az.add_layout('my_sections', 1, {
+		"this_class": "top_banner_layout",
+		"row_class": "top_banner_layout_rows",
+		"cell_class": "top_banner_layout_cells",
+		"number_of_rows": 1,
+		"number_of_columns": 2
+	})
+	az.style_layout('top_banner_layout', 1, {
+		"align": "center",
+		"height": "80px",
+		"column_widths": ['65%', '35%'],
+		"border": 0
+	})
+	az.add_layout('top_banner_layout_cells', 1, {
+		"this_class": "hold_dropdowns_layout",
+		"row_class": "hold_dropdowns_layout_rows",
+		"cell_class": "hold_dropdowns_layout_cells",
+		"number_of_rows": 1,
+		"number_of_columns": 3
+	})
+	az.style_layout('hold_dropdowns_layout', 1, {
+		"width": "100%",
+		"height": "auto",
+		"border": 0
+	})
+	az.add_layout('my_sections', 1, {
+		"this_class": "visual_layout",
+		"row_class": "visual_layout_rows",
+		"cell_class": "visual_layout_cells",
+		"number_of_rows": 1,
+		"number_of_columns": 2
+	})
+	az.style_layout('visual_layout', 1, {
+		"align": "center",
+		"background": "rgb(39, 36, 36)",
+		"border-radius": "4px",
+		"height": "460px",
+		"margin-top": "10px",
+		"column_widths": ['65%', '35%'],
+		"border": 0
+	})
+})
+    
+</script>
+</body>
+</html>
